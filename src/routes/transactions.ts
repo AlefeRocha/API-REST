@@ -41,7 +41,7 @@ export async function transactionsRoutes(app: FastifyInstance) {
         })
         .first();
 
-      return transaction;
+      return { transaction };
     }
   );
 
@@ -57,6 +57,7 @@ export async function transactionsRoutes(app: FastifyInstance) {
         .where("session_id", sessionId)
         .sum("amount", { as: "amount" })
         .first();
+
       return { summary };
     }
   );
@@ -76,7 +77,8 @@ export async function transactionsRoutes(app: FastifyInstance) {
 
     if (!sessionId) {
       sessionId = randomUUID();
-      reply.cookie("sessionId", sessionId, {
+
+      reply.setCookie("sessionId", sessionId, {
         path: "/",
         maxAge: 1000 * 60 * 60 * 24 * 7, // 7 days
       });
