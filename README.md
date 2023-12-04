@@ -1,14 +1,58 @@
-# RF (Requisitos funcionais)
+# Node Wallet API
 
-- [X] O usuário deve poder criar uma nova transação;
-- [X] O usuário deve poder obter um resumo da sua conta;
-- [X] O usuário deve poder listar todas as transações que ja fez;
-- [X] O usuário deve poder visualizar uma transação única;
+The NodeWallet API is a straightforward yet robust application developed in Node.js with the assistance of powerful frameworks such as Fastify, Knex, and Vitest. This API is designed to provide a seamless financial transaction experience without the need to create an account. Upon accessing the API, a UUID is generated and stored in the user's cookies for identification.
 
-# RN (Regas de Negócios)
+ - `Simple Transactions:` Users can perform credit and debit transactions in their accounts. The "credit" option adds funds to the account, while "debit" withdraws them.
 
-- [X] A transação pode ser do tipo crédito, que irá somar ao valor total ou débito, que irá subtrair;
-- [X] Deve ser possível identificarmos o usuário entre as requisições;
-- [X] O usuário só pode visualizar transações o qual só ele criou;
+ - `Balance and Summary:` A dedicated endpoint provides users with a detailed summary of their account, including the current balance. This offers an instant overview of finances.
 
-# RNF (Requisitos não funcionais)
+ - `Transaction History:` Users have the ability to list all transactions associated with their account. This provides a complete record of financial activities.
+
+ - `Transaction Query:` An endpoint allows users to retrieve specific details about a transaction, using the unique ID assigned to each transaction.
+
+ - `Automated Testing:` The project is accompanied by a robust suite of automated tests developed with Vitest. This ensures ongoing stability and reliability of the API.
+
+## ✨ Features
+ - The user can create a new transaction
+ - The user can get an account summary
+ - The user can list all previously conducted transactions
+ - The user can view a specific transaction by id
+
+## 💻 Installation
+
+- Install Node and NPM
+
+```bash
+  npm install
+```
+
+- Run the migrations
+
+```bash
+  npm run knex -- migrate:latest
+```
+
+ - Run "build", to create the js files
+
+```bash
+  npm run build
+``` 
+
+## 🚀 Getting started
+
+ - Run the project
+
+```bash
+  node build/server.js
+``` 
+
+## 📝 Examples
+ - To create an transaction
+
+```bash
+  {
+    "title": "Work",
+    "amount": 2000,
+    "type": "credit"
+  }
+``` 
